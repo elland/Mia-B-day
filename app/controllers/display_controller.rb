@@ -5,11 +5,14 @@ class DisplayController < ApplicationController
 		else
 			@msg = Message.first
 		end
-		@msg.content += "Mia, we love you!<br/>"
-		@count = @msg.content.split('<br/>').count
-		@msg.save
-		@msg = @msg.content.split('<br/>').in_groups_of(16)
-		@msg.compact!
-  end
-
+		begin
+			@msg.content += "Mia, we love you!<br/>"
+			@count = @msg.content.split('<br/>').count
+			@msg.save
+			@msg = @msg.content.split('<br/>').in_groups_of(16)
+			@msg.compact!
+		rescue
+			flash[:alert] = "error"
+		end
+	end
 end
