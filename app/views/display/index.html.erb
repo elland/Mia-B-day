@@ -13,15 +13,15 @@
 		</style>
 	</head>
 	<body>
-		<div class=index>
-			<div id=wrapper>
-				<h1 id="">You've been loved <%= @count %> times so far!</h1>
-				<% @msg.each do |msg| %>
+		<div class="index">
+			<div id="wrapper">
+				<h1 id="">You've been loved <%= @msgs.count %> times so far!</h1>
+				<span id="creators">
+					lol
+				</span>
+				<% @msgs.each do |msg| %>
 					<div class=column >
-						<% msg.each do |msg| %>
-							<p><%= msg %>
-							<br/>
-						<% end %>
+						<p><%= msg.content %>
 					</div>
 				<% end %>
 			</div>
