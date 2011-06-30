@@ -4,24 +4,32 @@
 		<title>Mia</title>
 		<style type="text/css" media="screen">
 		* { padding: 0; margin: 0; font: normal 19px/20px "Georgia", Times New Roman, serif; color: #b5671e; }
+		a {color: white}
 		body {	background: #F9667A; }
-		h1 { color: white; font-size: 32px; margin: 20px 15px; }
+		h1 { color: white; font-size: 32px; margin: 20px 15px; float: left; }
 		#wrapper { width: 90%; background: #916F4F; margin: 30px auto; overflow: hidden; }
 		.column { float: left; width: 20%; height: auto; padding: 10px; margin: 18.5px 18.5px; background: #fbdcdc; }
 		#wrapper, .column { border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; -webkit-box-shadow: 1px 1px 8px #000; -moz-box-shadow: 1px 1px 8px #000; box-shadow: 1px 1px 8px #000;}
 		.column p { text-align: center; padding: 5px }
+		#creators { overflow: hidden; }
+		#creator_div { color: lightgrey; float: right; margin: 30px;}
 		</style>
 	</head>
 	<body>
 		<div class="index">
 			<div id="wrapper">
-				<h1 id="">You've been loved <%= @msgs.count %> times so far!</h1>
-				<span id="creators">
-					lol
-				</span>
+				<div id="creators">
+					<h1 id="">You've been loved <%= @count %> times so far!</h1>
+					<div id="creator_div">
+						By: <%= link_to "@elland", "http://twitter.com/elland" %>, with <%= link_to "@pedrovanzella", "http://twitter.com/pedrovanzella" %>, <%= link_to "@runeroniek", "http://twitter.com/runeroniek" %> and <%= link_to "@fusels", "http://twitter.com/fusels" %>
+					</div>
+				</div>
 				<% @msgs.each do |msg| %>
 					<div class=column >
-						<p><%= msg.content %>
+						<% msg.each do |msg| %>
+							<p><%= msg.content %>
+							<br/>
+						<% end %>
 					</div>
 				<% end %>
 			</div>
